@@ -1,9 +1,9 @@
-package models.getUser;
+package models.user;
 
 import lombok.Data;
 
 @Data
-public class SuppotInfo {
+public class SupportInfo {
     private String url;
     private String text;
 }

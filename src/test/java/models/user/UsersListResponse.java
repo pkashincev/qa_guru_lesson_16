@@ -1,4 +1,4 @@
-package models.getUser;
+package models.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -14,5 +14,5 @@ public class UsersListResponse {
     @JsonProperty("total_pages")
     private int totalPages;
     private List<UserInfo> data;
-    private SuppotInfo support;
+    private SupportInfo support;
 }

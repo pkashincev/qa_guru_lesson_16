@@ -4,11 +4,11 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import models.getUser.SingleUserResponse;
-import models.getUser.UsersListResponse;
-import models.setUser.UpdateUserResponse;
-import models.setUser.User;
-import models.setUser.CreateUserResponse;
+import models.user.SingleUserResponse;
+import models.user.UsersListResponse;
+import models.user.UpdateUserResponse;
+import models.user.User;
+import models.user.CreateUserResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -34,10 +34,8 @@ public class ApiTests extends BaseTest {
         UsersListResponse response = step("Выполнить запрос", () ->
                 given(noBodyRequestSpec)
                         .param("page", pageNumber)
-
                         .when()
                         .get("/users")
-
                         .then()
                         .spec(successfulResponseSpec)
                         .extract().as(UsersListResponse.class));
@@ -62,10 +60,8 @@ public class ApiTests extends BaseTest {
     void getSingleUserTest() {
         SingleUserResponse response = step("Выполнить запрос", () ->
                 given(noBodyRequestSpec)
-
                         .when()
                         .get("/users/2")
-
                         .then()
                         .spec(successfulResponseSpec)
                         .extract().as(SingleUserResponse.class));
@@ -104,10 +100,8 @@ public class ApiTests extends BaseTest {
     void userNotFoundTest() {
         SingleUserResponse response = step("Выполнить запрос", () ->
                 given(noBodyRequestSpec)
-
                         .when()
                         .get("/users/23")
-
                         .then()
                         .spec(notFoundResponseSpec)
                         .extract().as(SingleUserResponse.class));
@@ -132,10 +126,8 @@ public class ApiTests extends BaseTest {
         CreateUserResponse response = step("Выполнить запрос", () ->
                 given(withBodyRequestSpec)
                         .body(request)
-
                         .when()
                         .post("/users")
-
                         .then()
                         .spec(createdResponseSpec)
                         .extract().as(CreateUserResponse.class)
@@ -169,10 +161,8 @@ public class ApiTests extends BaseTest {
         UpdateUserResponse response = step("Выполнить запрос", () ->
                 given(withBodyRequestSpec)
                         .body(request)
-
                         .when()
                         .put("/users/2")
-
                         .then()
                         .spec(successfulResponseSpec)
                         .extract().as(UpdateUserResponse.class));
@@ -200,10 +190,8 @@ public class ApiTests extends BaseTest {
     void deleteUserTest() {
         step("Выполнить запрос и проверить, что получен 204 код без body", () ->
                 given(noBodyRequestSpec)
-
                         .when()
                         .delete("/users/2")
-
                         .then()
                         .spec(noContentResponseSpec));
     }
